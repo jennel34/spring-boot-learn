@@ -39,7 +39,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void test() throws Exception{
+    public void test() throws Exception {
         ConfigCenter cfg = ConfigFactory.create(ConfigCenter.class);
         System.out.println(cfg.getAuthor());
         ConfigCenter instance = ConfigCache.getOrCreate(ConfigCenter.class);

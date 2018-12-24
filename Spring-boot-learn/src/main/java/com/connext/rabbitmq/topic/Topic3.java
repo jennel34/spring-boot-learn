@@ -21,11 +21,11 @@ public class Topic3 {
             factory.setHost("localhost");
             connection = factory.newConnection();
             channel = connection.createChannel();
-            channel.exchangeDeclare(EXCHANGE_NAME,"topic");
+            channel.exchangeDeclare(EXCHANGE_NAME, "topic");
             String queueName = channel.queueDeclare().getQueue();
-            channel.queueBind(queueName,EXCHANGE_NAME,"other");
+            channel.queueBind(queueName, EXCHANGE_NAME, "other");
             Consumer consumer = new MyTopic(channel);
-            channel.basicConsume(queueName,false,consumer);
+            channel.basicConsume(queueName, false, consumer);
         } catch (Exception e) {
             e.printStackTrace();
         }

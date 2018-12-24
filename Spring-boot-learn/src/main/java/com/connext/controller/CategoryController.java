@@ -22,9 +22,9 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @ApiOperation(value = "批量插入品类信息",notes = "批量插入品类信息")
-    @RequestMapping(value = "/batchUpdate" , method = RequestMethod.POST)
-    public int batchUpdate(@RequestBody List<Platform> list){
+    @ApiOperation(value = "批量插入品类信息", notes = "批量插入品类信息")
+    @RequestMapping(value = "/batchUpdate", method = RequestMethod.POST)
+    public int batchUpdate(@RequestBody List<Platform> list) {
         logger.info("batchUpdate-start:");
         categoryService.batchUpdate(list);
         return 1;

@@ -15,20 +15,20 @@ public class CommonException {
 
     @ExceptionHandler({RuntimeException.class})
     @ResponseStatus(HttpStatus.OK)
-    public ModelAndView processException(RuntimeException exception){
+    public ModelAndView processException(RuntimeException exception) {
         logger.info("自定义异常处理-RuntimeException");
         ModelAndView m = new ModelAndView();
-        m.addObject("roncooException",exception.getMessage());
+        m.addObject("roncooException", exception.getMessage());
         m.setViewName("/error/501.html");
         return m;
     }
 
     @ExceptionHandler({Exception.class})
     @ResponseStatus(HttpStatus.OK)
-    public ModelAndView processException(Exception exception){
+    public ModelAndView processException(Exception exception) {
         logger.info("自定义异常处理-Exception");
         ModelAndView m = new ModelAndView();
-        m.addObject("roncooException",exception.getMessage());
+        m.addObject("roncooException", exception.getMessage());
         m.setViewName("/error/500.html");
         return m;
     }

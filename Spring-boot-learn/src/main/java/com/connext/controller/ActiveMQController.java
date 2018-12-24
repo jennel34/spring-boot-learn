@@ -20,14 +20,14 @@ public class ActiveMQController {
     private ActiveMQConnectionFactory connectionFactory;
 
     @RequestMapping("/queue/{msg}")
-    public void sendQueue(@PathVariable("msg") String msg){
+    public void sendQueue(@PathVariable("msg") String msg) {
         Destination destination = new ActiveMQQueue("test.queue");
-        producer.sendMessage(destination,msg);
+        producer.sendMessage(destination, msg);
     }
 
     @RequestMapping("/topic/{msg}")
-    public void sendTopic(@PathVariable("msg") String msg){
+    public void sendTopic(@PathVariable("msg") String msg) {
         Destination destination = new ActiveMQTopic("test.topic");
-        producer.sendMessage(destination,msg);
+        producer.sendMessage(destination, msg);
     }
 }

@@ -12,10 +12,10 @@ public interface PlatformRepository extends JpaRepository<Platform, Long>, JpaSp
 
     Platform findByName(String platformName);
 
-    Platform findByNameAndIsDeleted(String platformName,boolean isDeleted);
+    Platform findByNameAndIsDeleted(String platformName, boolean isDeleted);
 
     @Query("select A from Platform A where A.useForBudget=true and A.name=:platformName")
-    Platform findByNameForBudget(@Param("platformName")String platformName);
+    Platform findByNameForBudget(@Param("platformName") String platformName);
 
     Page<Platform> findAll(Pageable pageable);
 

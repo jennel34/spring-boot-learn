@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Service
-public class PlatformService extends AbstractDao{
+public class PlatformService extends AbstractDao {
 
     @Autowired
     private PlatformRepository platformRepository;
@@ -24,25 +24,25 @@ public class PlatformService extends AbstractDao{
     }
 
     public Platform findUsedByName(String platformName) {
-        return platformRepository.findByNameAndIsDeleted(platformName,false);
+        return platformRepository.findByNameAndIsDeleted(platformName, false);
     }
 
     public Platform findByNameForBudget(String platformName) {
         return platformRepository.findByNameForBudget(platformName);
     }
 
-    public Page<Platform> findAll(int page, int size){
+    public Page<Platform> findAll(int page, int size) {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(page, size, sort);
         return platformRepository.findAll(pageable);
     }
 
-    public Page<Platform> findByNameForPage(String platformName, Pageable pageable){
-        return platformRepository.findByName(platformName,pageable);
+    public Page<Platform> findByNameForPage(String platformName, Pageable pageable) {
+        return platformRepository.findByName(platformName, pageable);
     }
 
     @Transactional
-    public int insert(String platformName){
+    public int insert(String platformName) {
 
         Platform platform = new Platform();
         platform.setId(UUID.randomUUID().toString());
@@ -56,7 +56,7 @@ public class PlatformService extends AbstractDao{
         platform.setUseForBudget(false);
         platform.setDeleted(false);
 
-        if(platformRepository.countByName(platformName) > 0){
+        if (platformRepository.countByName(platformName) > 0) {
             throw new RuntimeException("当前平台名称已存在！");
         }
         platformRepository.save(platform);

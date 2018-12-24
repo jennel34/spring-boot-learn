@@ -21,7 +21,7 @@ public class Sub1 {
             factory.setHost("localhost");
             connection = factory.newConnection();
             channel = connection.createChannel();
-            channel.exchangeDeclare(EXCHANGE_NAME,"fanout");
+            channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
             // 创建一个非持久的、唯一的且自动删除的队列
             String queueName = channel.queueDeclare().getQueue();
             // 为转发器指定队列，设置binding

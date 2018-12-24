@@ -21,11 +21,11 @@ public class Sub2 {
             factory.setHost("localhost");
             connection = factory.newConnection();
             channel = connection.createChannel();
-            channel.exchangeDeclare(EXCHANGE_NAME,"fanout");
+            channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
             String queueName = channel.queueDeclare().getQueue();
-            channel.queueBind(queueName,EXCHANGE_NAME,"");
+            channel.queueBind(queueName, EXCHANGE_NAME, "");
             Consumer consumer = new MyPubSub(channel);
-            channel.basicConsume(queueName,false,consumer);
+            channel.basicConsume(queueName, false, consumer);
         } catch (Exception e) {
             e.printStackTrace();
         }

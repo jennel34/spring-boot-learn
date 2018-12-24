@@ -9,31 +9,31 @@ import java.util.Map;
 public class EmailInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
-//    ID
+    //    ID
     private long id;
-//    发送人
+    //    发送人
     private String msgFrom;
-//    收件人
+    //    收件人
     private String msgTo;
-//    密送
+    //    密送
     private String bcc;
-//    抄送
+    //    抄送
     private String cc;
-//    主题
+    //    主题
     private String subject;
-//    消息
+    //    消息
     private String text;
-//    附件ID
+    //    附件ID
     private String fileIds;
-//    图片ID
+    //    图片ID
     private String imgIds;
-//    附件
-    private Map<String , Object> attachmentList;
-//    图片
-    private Map<String , Object> imagesList;
-//    状态
-    private  String status;
-//    响应信息
+    //    附件
+    private Map<String, Object> attachmentList;
+    //    图片
+    private Map<String, Object> imagesList;
+    //    状态
+    private String status;
+    //    响应信息
     private String resInfo;
 
     public long getId() {

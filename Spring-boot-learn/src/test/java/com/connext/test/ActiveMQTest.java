@@ -15,11 +15,12 @@ import javax.jms.Destination;
 public class ActiveMQTest {
     @Autowired
     private Producer producer;
+
     @Test
-    public void contextLoads() throws InterruptedException{
+    public void contextLoads() throws InterruptedException {
         Destination destination = new ActiveMQQueue("test.queue");
-        for (int i = 0; i < 20 ; i++) {
-            producer.sendMessage(destination,"Test Message!");
+        for (int i = 0; i < 20; i++) {
+            producer.sendMessage(destination, "Test Message!");
         }
     }
 }

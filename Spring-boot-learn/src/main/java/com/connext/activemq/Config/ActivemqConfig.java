@@ -12,15 +12,17 @@ public class ActivemqConfig {
     public ActiveMQConnectionFactory connectionFactory() {
         return new ActiveMQConnectionFactory("admin", "admin", "tcp://localhost:61616");
     }
+
     @Bean
-    public JmsListenerContainerFactory<?> jmsListenerContainerTopic(ActiveMQConnectionFactory connectionFactory){
+    public JmsListenerContainerFactory<?> jmsListenerContainerTopic(ActiveMQConnectionFactory connectionFactory) {
         DefaultJmsListenerContainerFactory bean = new DefaultJmsListenerContainerFactory();
         bean.setPubSubDomain(true);
         bean.setConnectionFactory(connectionFactory);
         return bean;
     }
+
     @Bean
-    public JmsListenerContainerFactory<?> jmsListenerContainerQueue(ActiveMQConnectionFactory connectionFactory){
+    public JmsListenerContainerFactory<?> jmsListenerContainerQueue(ActiveMQConnectionFactory connectionFactory) {
         DefaultJmsListenerContainerFactory bean = new DefaultJmsListenerContainerFactory();
         bean.setConnectionFactory(connectionFactory);
         return bean;

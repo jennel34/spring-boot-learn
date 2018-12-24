@@ -13,8 +13,8 @@ public class StudentController {
     private StudentService studentService;
 
     @RequestMapping(value = "/list")
-    public String findAll(Model model){
-        model.addAttribute("studentList",studentService.findAll());
+    public String findAll(Model model) {
+        model.addAttribute("studentList", studentService.findAll());
         return "student";
     }
 }

@@ -7,20 +7,21 @@ import com.rabbitmq.client.Consumer;
 
 public class Consumer1 {
     private final static String QUEUE_NAME = "WorkQueue";
+
     public static void main(String[] args) {
         receive();
     }
 
-    public static void receive(){
+    public static void receive() {
         ConnectionFactory factory = null;
         Connection connection = null;
         Channel channel = null;
-        try{
+        try {
             factory = new ConnectionFactory();
             factory.setHost("localhost");
             connection = factory.newConnection();
             channel = connection.createChannel();
-            channel.queueDeclare(QUEUE_NAME,false,false,false,null);
+            channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 //            由于4.*的版本以后QueueingConsumer被停用
             Consumer consumer = new MyConsumer(channel);
 //            创建队列消费者
@@ -33,7 +34,7 @@ public class Consumer1 {
                 String message = new String(delivery.getBody());
                 System.out.println("Received the message : " + message );
             }*/
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -21,7 +21,7 @@ public class Worker2 {
             channel.basicQos(1);
             channel.queueDeclare(QUEUE_NAME, false, false, false, null);
             Consumer consumer = new MyWorker(channel);
-            channel.basicConsume(QUEUE_NAME,false,consumer);
+            channel.basicConsume(QUEUE_NAME, false, consumer);
         } catch (Exception e) {
             e.printStackTrace();
         }
