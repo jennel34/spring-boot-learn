@@ -1,4 +1,4 @@
-package com.connext.rabbitmq.pubsub;
+package com.connext.rabbitmq.routing;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -8,8 +8,8 @@ import java.util.LinkedHashSet;
 import java.util.Random;
 import java.util.Set;
 
-public class ProPubSub {
-    private final static String EXCHANGE_NAME = "TestEx";
+public class ProRouting {
+    private final static String EXCHANGE_NAME = "RoutingEx";
     public static void main(String[] args) {
         send();
     }
@@ -23,7 +23,7 @@ public class ProPubSub {
             factory.setHost("localhost");
             connection = factory.newConnection();
             channel = connection.createChannel();
-            channel.exchangeDeclare(EXCHANGE_NAME,"fanout");
+            channel.exchangeDeclare(EXCHANGE_NAME,"direct");
             channel.confirmSelect();
             Set<Integer> set = new LinkedHashSet<>();
             Random random = new Random();
@@ -31,8 +31,14 @@ public class ProPubSub {
                 set.add(random.nextInt(10)+1);
             }
             for (Integer i : set) {
+                String routing = null;
+                if(i%3 == 0){
+                    routing = "one";
+                }else {
+                    routing = "two";
+                }
                 String message = "Test Message"+i;
-                channel.basicPublish(EXCHANGE_NAME,"",null,message.getBytes("UTF-8"));
+                channel.basicPublish(EXCHANGE_NAME,routing,null,message.getBytes("UTF-8"));
             }
             if(channel.waitForConfirms()){
                     System.out.println("success");
