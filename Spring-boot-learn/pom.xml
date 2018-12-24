@@ -111,6 +111,11 @@
             <artifactId>amqp-client</artifactId>
             <version>5.5.0</version>
         </dependency>
+        <!-- Spring Boot Freemarker 依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
